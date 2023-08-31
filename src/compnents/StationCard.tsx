@@ -1,15 +1,18 @@
 import React from "react";
 import Station from "../models/stations";
 import StatusIcon from "./StatusIcon";
+import { Link } from "react-router-dom";
 
 interface StationProp {
   station: Station;
+  key: React.Key;
 }
 
 function StationCard({ station }: StationProp): JSX.Element {
   return (
+    <Link to={station.contentPath} target="_blank">
     <div className="flow-root" key={`card-${station.stationid}`}>
-      <li key={station.stationid} className="py-3 sm:py-4">
+      <li key={`li-${station.stationid}`} className="py-3 sm:py-4">
         <div className="flex items-center space-x-4">
           <div className="flex-shrink-0">
             <StatusIcon stationStatus={station.h70CurrentStatus}/>
@@ -23,11 +26,12 @@ function StationCard({ station }: StationProp): JSX.Element {
             </p>
           </div>
           <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-            Available: {station.capacityKg}Kg
+            H2 Available: {station.capacityKg}Kg
           </div>
         </div>
       </li>
     </div>
+    </Link>
   );
 }
 
