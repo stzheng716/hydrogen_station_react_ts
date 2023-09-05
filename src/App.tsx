@@ -29,14 +29,12 @@ function App(): JSX.Element {
 
   async function handleSearch(zipCode: string) {
     const stations = await HydrogenStationsApi.getZipStations(zipCode);
-    console.log("zipstations", stations)
     setStations({ stationsData: stations, isLoaded: true });
   }
 
   //This gets the current location of the user
   const handleGeolocationUpdate = (evt: any) => {
     const {latitude, longitude} = evt.coords
-    console.log("Geolocation update:", latitude, longitude)
   }
 
   if (!stations.isLoaded || !stations.stationsData) {
@@ -49,7 +47,7 @@ function App(): JSX.Element {
         <div className="w-full bg-slate-700">
           <NavbarWithSearch handleSearch={handleSearch} />
         </div>
-        <div className="flex flex-col md:flex-row h-screen overflow-hidden">
+        <div className="flex flex-col md:flex-row overflow-hidden h-1/4 md:h-auto">
           <div className="w-full md:w-1/3 h-30vh md:h-screen overflow-y-auto dark:bg-gray-800 dark:border-gray-700">
             <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white p-4">
               Hydrogen Fuel Stations
@@ -60,7 +58,7 @@ function App(): JSX.Element {
               ))}
             </ul>
           </div>
-          <div className="w-full md:w-2/3 h-70vh md:h-screen relative overflow-hidden order-first md:order-last">
+          <div className="w-full md:w-2/3 h-1/2 md:h-screen relative overflow-hidden order-first md:order-last">
             <MapBox stations={stations.stationsData} handleGeolocationUpdate={handleGeolocationUpdate} />
           </div>
         </div>

@@ -24,7 +24,6 @@ export function NavbarWithSearch({
 
   function handleSubmit(evt: React.FormEvent) {
     evt.preventDefault();
-    console.log("hello")
     handleSearch(searchZip);
   }
 
@@ -35,31 +34,26 @@ export function NavbarWithSearch({
       className="px-4 py-3"
       fullWidth={true}
     >
-      <div className="flex flex-wrap items-center justify-between gap-y-4 text-white bg-slate-600 rounded p-4">
+      <div className="flex flex-col md:flex-row flex-wrap items-center justify-between gap-y-2 md:gap-y-4 text-white bg-slate-600 rounded p-2 md:p-4">
         <Typography
           as="a"
           href="/"
           variant="h4"
           color="white"
-          className="mr-4 ml-2 cursor-pointer py-1.5"
+          className="text-xs md:text-base mr-2 ml-1 cursor-pointer py-1"
         >
-          California Hydrogen Fuel Stations Locator
+          CA Hydrogen Fuel Stations Locator
         </Typography>
-        <div className="ml-auto flex gap-1 md:mr-4">
-          <IconButton variant="text" color="white">
-            <BellIcon className="h-4 w-4" />
-          </IconButton>
-        </div>
         <div className="relative flex w-full gap-2 md:w-max">
           <form onSubmit={handleSubmit}>
             <Input
               type="search"
               color="black"
-              label="zipcode"
-              className="pr-20"
+              label="exact zipcode"
+              className="pr-16 md:pr-20"
               onChange={handleChange}
               containerProps={{
-                className: "min-w-[288px]",
+                className: "min-w-[200px] md:min-w-[288px]",
               }}
               crossOrigin=""
             />
