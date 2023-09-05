@@ -27,6 +27,18 @@ function App(): JSX.Element {
     setStations({ stationsData: stations, isLoaded: true });
   }
 
+  async function handleSearch(zipCode: string) {
+    const stations = await HydrogenStationsApi.getZipStations(zipCode);
+    console.log("zipstations", stations)
+    setStations({ stationsData: stations, isLoaded: true });
+  }
+
+  //This gets the current location of the user
+  const handleGeolocationUpdate = (evt: any) => {
+    const {latitude, longitude} = evt.coords
+    console.log("Geolocation update:", latitude, longitude)
+  }
+
   if (!stations.isLoaded || !stations.stationsData) {
     return <div className="loading">Loading</div>;
   }
@@ -34,8 +46,8 @@ function App(): JSX.Element {
   return (
     <>
       <BrowserRouter>
-        <div className="w-full">
-          <NavbarWithSearch />
+        <div className="w-full bg-slate-700">
+          <NavbarWithSearch handleSearch={handleSearch} />
         </div>
         <div className="flex flex-col md:flex-row h-screen overflow-hidden">
           <div className="w-full md:w-1/3 h-30vh md:h-screen overflow-y-auto dark:bg-gray-800 dark:border-gray-700">
@@ -49,7 +61,7 @@ function App(): JSX.Element {
             </ul>
           </div>
           <div className="w-full md:w-2/3 h-70vh md:h-screen relative overflow-hidden order-first md:order-last">
-            <MapBox stations={stations.stationsData} />
+            <MapBox stations={stations.stationsData} handleGeolocationUpdate={handleGeolocationUpdate} />
           </div>
         </div>
       </BrowserRouter>

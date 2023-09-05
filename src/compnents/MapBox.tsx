@@ -6,15 +6,19 @@ import Map, {
 } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Station from "../models/stations";
+import { Button } from "@material-tailwind/react";
 
 interface StationProp {
   stations: Station[];
+  handleGeolocationUpdate: (evt: any) => void;
 }
 
 const token = process.env.REACT_APP_MAPBOXTOKEN;
 
-function MapBox({ stations }: StationProp): JSX.Element {
-
+function MapBox({
+  stations,
+  handleGeolocationUpdate,
+}: StationProp): JSX.Element {
   // const CustomPopup = () => {
   //   return (
   //     <Popup
@@ -29,22 +33,23 @@ function MapBox({ stations }: StationProp): JSX.Element {
   //     </Popup>
   //   )};
 
-  const pins = stations.map((s: Station ) => {
-    let color: string = "black"
 
-    if(s.h70CurrentStatus === "1") {
-      color = "green"
-    } else if (s.h70CurrentStatus === "2"){
-      color = "yellow"
+  const pins = stations.map((s: Station) => {
+    let color: string = "black";
+
+    if (s.h70CurrentStatus === "1") {
+      color = "green";
+    } else if (s.h70CurrentStatus === "2") {
+      color = "yellow";
     } else if (s.h70CurrentStatus === "3") {
-      color = "red"
+      color = "red";
     } else if (s.h70CurrentStatus === "6") {
-      color = "blue"
-    } 
+      color = "blue";
+    }
 
-  //   openPopup = (index) => {
-  //     this.setSelectedMarker(index)
-  // }
+    //   openPopup = (index) => {
+    //     this.setSelectedMarker(index)
+    // }
 
     return (
       <>
@@ -76,8 +81,13 @@ function MapBox({ stations }: StationProp): JSX.Element {
         key="map"
       >
         {pins}
+        <Button>
+          <GeolocateControl
+            position="top-left"
+            onGeolocate={handleGeolocationUpdate}
+          />
+        </Button>
         <FullscreenControl position="top-left" />
-        <GeolocateControl position="top-left" />
         <NavigationControl position="top-left" />
       </Map>
     </div>

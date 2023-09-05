@@ -10,8 +10,8 @@ interface StationProp {
 
 function StationCard({ station }: StationProp): JSX.Element {
   return (
-    <Link to={station.contentPath} target="_blank">
     <div className="flow-root" key={`card-${station.stationid}`}>
+      <Link to={station.contentPath} target="_blank">
       <li key={`li-${station.stationid}`} className="py-3 sm:py-4">
         <div className="flex items-center space-x-4">
           <div className="flex-shrink-0">
@@ -30,8 +30,8 @@ function StationCard({ station }: StationProp): JSX.Element {
           </div>
         </div>
       </li>
-    </div>
     </Link>
+    </div>
   );
 }
 

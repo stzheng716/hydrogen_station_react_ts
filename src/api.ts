@@ -38,6 +38,11 @@ class HydrogenStationsApi {
         return res?.data.station;
     }
 
+    static async getZipStations(zipCode: string) {
+        const res = await this.request("stations/zipCode", { zipCode })
+        return res?.data.station;
+    }
+
 
 
 }
