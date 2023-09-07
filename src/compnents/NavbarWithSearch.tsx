@@ -31,18 +31,18 @@ export function NavbarWithSearch({
     <Navbar
       variant="gradient"
       color="blue-gray"
-      className="px-4 py-3"
+      className="px-1 py-1 h-1/10"
       fullWidth={true}
     >
-      <div className="flex flex-col md:flex-row flex-wrap items-center justify-between gap-y-2 md:gap-y-4 text-white bg-slate-600 rounded p-2 md:p-4">
+      <div className="flex flex-col md:flex-row flex-wrap items-center justify-between gap-y-1 md:gap-y-2 text-white bg-slate-600 rounded p-1 md:p-2">
         <Typography
           as="a"
           href="/"
-          variant="h4"
+          variant="h3"
           color="white"
-          className="text-xs md:text-base mr-2 ml-1 cursor-pointer py-1"
+          className="text-xs md:text-base mr-2 ml-1 cursor-pointer"
         >
-          CA Hydrogen Fuel Stations Locator
+          CA Hydrogen Stations Locator
         </Typography>
         <div className="relative flex w-full gap-2 md:w-max">
           <form onSubmit={handleSubmit}>

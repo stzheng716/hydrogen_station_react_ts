@@ -44,7 +44,7 @@ function App(): JSX.Element {
   return (
     <>
       <BrowserRouter>
-        <div className="w-full bg-slate-700">
+        <div className="w-full bg-slate-700 p-1">
           <NavbarWithSearch handleSearch={handleSearch} />
         </div>
         <div className="flex flex-col md:flex-row overflow-hidden h-1/4 md:h-auto">
@@ -58,7 +58,7 @@ function App(): JSX.Element {
               ))}
             </ul>
           </div>
-          <div className="w-full md:w-2/3 h-1/2 md:h-screen relative overflow-hidden order-first md:order-last">
+          <div className="w-full md:w-2/3 h-1/4 relative overflow-hidden order-first md:order-last">
             <MapBox stations={stations.stationsData} handleGeolocationUpdate={handleGeolocationUpdate} />
           </div>
         </div>

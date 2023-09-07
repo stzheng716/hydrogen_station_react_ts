@@ -9,6 +9,7 @@ import Station from "../models/stations";
 import MarkerComp from "./Markers";
 import { useEffect, useRef, useState } from "react";
 import getColor from "../utils/getColor";
+import { Link } from "react-router-dom";
 
 interface StationProp {
   stations: Station[];
@@ -49,7 +50,7 @@ function MapBox({
           zoom: 10,
         }}
         style={{ width: "100vw", height: "100vh" }}
-        mapStyle="mapbox://styles/mapbox/streets-v12"
+        mapStyle="mapbox://styles/mapbox/dark-v11"
         key="map"
       >
         {stations.map((s: Station) => (
@@ -57,6 +58,7 @@ function MapBox({
             station={s}
             setSelectedStation={setSelectedStation}
             selectedStation={selectedStation}
+            key={`marker-comp ${s.stationid}`}
           />
         ))}
         <GeolocateControl
@@ -82,12 +84,14 @@ function MapBox({
                 Status: {getStatus(selectedStation.h70CurrentStatus)}
               </h2>
               <h2 className="font-bold">
-                Availabe(Kg): {selectedStation.capacityKg} Kg
+                H2 Availabe(Kg): {selectedStation.capacityKg} Kg
               </h2>
-              <h2 className="font-bold">
-                {`${selectedStation.streetAddress} 
+              <Link to={`https://www.google.com/maps/search/?api=1&query=${selectedStation.streetAddress}${selectedStation.city}${selectedStation.zipcode}`} target="_blank">
+                <h2 className="font-bold">
+                  {`${selectedStation.streetAddress} 
               ${selectedStation.city} ${selectedStation.zipcode}`}
-              </h2>
+                </h2>
+              </Link>
             </div>
           </Popup>
         )}
