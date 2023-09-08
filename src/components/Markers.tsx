@@ -17,8 +17,8 @@ function MarkerComp({
     <>
       <Marker
         key={`marker-${station.stationid}`}
-        longitude={station.longitude}
-        latitude={station.latitude}
+        longitude={station.long}
+        latitude={station.lat}
         color={getColor(station.h70CurrentStatus)}
         onClick={() => {
           setSelectedStation({ ...station, popStatus: true });

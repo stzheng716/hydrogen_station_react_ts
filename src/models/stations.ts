@@ -3,8 +3,8 @@ export default interface Station {
     stationName: string;
     h70CurrentStatus: string;
     contentPath: string;
-    longitude: number;
-    latitude: number;
+    long: number;
+    lat: number;
     streetAddress: string;
     city: string;
     state: string;

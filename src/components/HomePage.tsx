@@ -21,7 +21,7 @@ function HomePage({ stations, handleGeolocationUpdate }: HomePageProps): JSX.Ele
           ))}
         </ul>
       </div>
-      <div className="w-full md:w-2/3 h-1/4 relative overflow-hidden order-first md:order-last">
+      <div className="w-full h-50vh md:w-2/3 h-1/4 relative order-first md:order-last">
         <MapBox
           stations={stations}
           handleGeolocationUpdate={handleGeolocationUpdate}

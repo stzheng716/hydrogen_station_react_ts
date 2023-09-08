@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import HydrogenStationsApi from "./api";
 import Station from "./models/stations";
-import StationCard from "./components/StationCard";
-import MapBox from "./components/MapBox";
 import { BrowserRouter } from "react-router-dom";
-import Nav from "./components/Nav";
 import Header from "./components/Header";
 import RoutesList from "./components/RoutesList";
+import nearbySort from "nearby-sort";
+import { ToastContainer } from "react-toastify";
 
 interface StationState {
   stationsData: Station[] | null;
@@ -35,8 +34,18 @@ function App(): JSX.Element {
   }
 
   //This gets the current location of the user
-  const handleGeolocationUpdate = (evt: any) => {
-    const {latitude, longitude} = evt.coords
+  async function handleGeolocationUpdate(evt: any) {
+    const { latitude, longitude } = evt.coords;
+
+    const coordinates = {
+      lat: latitude,
+      long: longitude,
+    };
+
+    let ascSortedData = await nearbySort(coordinates, stations.stationsData!);
+    setStations({ stationsData: ascSortedData, isLoaded: true });
+
+    return coordinates;
   }
 
   if (!stations.isLoaded || !stations.stationsData) {
@@ -45,14 +54,15 @@ function App(): JSX.Element {
 
   return (
     <>
+      <ToastContainer position="top-center" theme="colored" hideProgressBar={false}/>
       <BrowserRouter>
         <div className="flex flex-col bg-emerald-400">
-          <Header handleSearch={handleSearch}/>
+          <Header handleSearch={handleSearch} />
         </div>
 
         <RoutesList
-        stations={stations.stationsData}
-        handleGeolocationUpdate={handleGeolocationUpdate}
+          stations={stations.stationsData}
+          handleGeolocationUpdate={handleGeolocationUpdate}
         />
       </BrowserRouter>
     </>

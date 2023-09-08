@@ -7,9 +7,11 @@ import Map, {
 import "mapbox-gl/dist/mapbox-gl.css";
 import Station from "../models/stations";
 import MarkerComp from "./Markers";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import getColor from "../utils/getColor";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface StationProps {
   stations: Station[];
@@ -49,7 +51,7 @@ function MapBox({
           latitude: 37.8,
           zoom: 10,
         }}
-        style={{ width: "100vw", height: "95vh" }}
+        style={{ width: "100vw", height: "93vh" }}
         mapStyle="mapbox://styles/mapbox/navigation-night-v1"
         key="map"
       >
@@ -63,15 +65,20 @@ function MapBox({
         ))}
         <GeolocateControl
           position="top-left"
-          onGeolocate={handleGeolocationUpdate}
+          onGeolocate={(evt) => {
+            const prom = handleGeolocationUpdate(evt);
+            toast.promise(prom!, {
+              success: "Station List is now sorted by distance to your location",
+              error: "Promise rejected",
+            });
+          }}
         />
-        <FullscreenControl position="top-left" />
         <NavigationControl position="top-left" />
         {selectedStation.popStatus && (
           <Popup
-            longitude={selectedStation.longitude}
-            latitude={selectedStation.latitude}
-            key={`${selectedStation.longitude}-${selectedStation.latitude}`}
+            longitude={selectedStation.long}
+            latitude={selectedStation.lat}
+            key={`${selectedStation.long}-${selectedStation.lat}`}
             closeOnClick={false}
             anchor="bottom"
           >
@@ -84,7 +91,7 @@ function MapBox({
                 Status: {getStatus(selectedStation.h70CurrentStatus)}
               </h2>
               <h2 className="font-bold">
-                H2 Availabe(Kg): {selectedStation.capacityKg} Kg
+                H2 Available(Kg): {selectedStation.capacityKg} Kg
               </h2>
               <Link
                 to={`https://www.google.com/maps/search/?api=1&query=${selectedStation.streetAddress}${selectedStation.city}${selectedStation.zipcode}`}

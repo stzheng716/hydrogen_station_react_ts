@@ -19,8 +19,18 @@ const NavLinks = ({ handleSearch }: SearchProp) => {
 
   return (
     <>
-      <NavLink to="/" className="hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-sm font-medium"><b>Home</b></NavLink>
-      <NavLink to="/about" className="hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-sm font-medium"><b>About</b></NavLink>
+      <NavLink
+        to="/"
+        className="hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+      >
+        <b>Station/Map</b>
+      </NavLink>
+      <NavLink
+        to="/about"
+        className="hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+      >
+        <b>About</b>
+      </NavLink>
       <form className="flex items-center" onSubmit={handleSubmit}>
         <label className="sr-only">Search</label>
         <div className="relative w-full">
@@ -67,7 +77,7 @@ const Nav = ({ handleSearch }: SearchProp) => {
 
   return (
     <>
-      <nav className="flex md:w-1/4 lg:w-1/8 justify-end">
+      <nav className="flex md:w-1/3 lg:w-1/8 justify-end">
         <div className="hidden w-full justify-between md:flex items-center">
           <NavLinks handleSearch={handleSearch} />
         </div>
