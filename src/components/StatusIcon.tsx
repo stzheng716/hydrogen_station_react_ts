@@ -1,5 +1,3 @@
-import React from "react";
-
 interface StatusIconProp {
     stationStatus: string | null;
 }
@@ -10,7 +8,7 @@ function StatusIcon({stationStatus}: StatusIconProp): JSX.Element {
     if(stationStatus === "1") {
         return <img src="https://www.freeiconspng.com/uploads/green-circle-icon-28.png" className="w-8 h-8 rounded-full" alt="" />
     } else if(stationStatus === "2") {
-        return <img src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/26a0.png" className="w-8 h-8 rounded-full" alt="" />
+        return <img src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/26a0.png" className="w-8 h-8" alt="" />
     } else if(stationStatus === "3") {
         return <img src="https://cdn3.iconfinder.com/data/icons/basicolor-signs-warnings/24/185_stop_unavailable-512.png" className="w-8 h-8 rounded-full" alt="" />
     } else if(stationStatus === "6") {

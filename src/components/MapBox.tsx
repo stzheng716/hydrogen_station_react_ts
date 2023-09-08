@@ -11,7 +11,7 @@ import { useEffect, useRef, useState } from "react";
 import getColor from "../utils/getColor";
 import { Link } from "react-router-dom";
 
-interface StationProp {
+interface StationProps {
   stations: Station[];
   handleGeolocationUpdate: (evt: any) => void;
 }
@@ -21,7 +21,7 @@ const token = process.env.REACT_APP_MAPBOXTOKEN;
 function MapBox({
   stations,
   handleGeolocationUpdate,
-}: StationProp): JSX.Element {
+}: StationProps): JSX.Element {
   const [selectedStation, setSelectedStation] = useState<any>({
     popStatus: false,
   });
@@ -49,8 +49,8 @@ function MapBox({
           latitude: 37.8,
           zoom: 10,
         }}
-        style={{ width: "100vw", height: "100vh" }}
-        mapStyle="mapbox://styles/mapbox/dark-v11"
+        style={{ width: "100vw", height: "95vh" }}
+        mapStyle="mapbox://styles/mapbox/navigation-night-v1"
         key="map"
       >
         {stations.map((s: Station) => (
@@ -86,7 +86,10 @@ function MapBox({
               <h2 className="font-bold">
                 H2 Availabe(Kg): {selectedStation.capacityKg} Kg
               </h2>
-              <Link to={`https://www.google.com/maps/search/?api=1&query=${selectedStation.streetAddress}${selectedStation.city}${selectedStation.zipcode}`} target="_blank">
+              <Link
+                to={`https://www.google.com/maps/search/?api=1&query=${selectedStation.streetAddress}${selectedStation.city}${selectedStation.zipcode}`}
+                target="_blank"
+              >
                 <h2 className="font-bold">
                   {`${selectedStation.streetAddress} 
               ${selectedStation.city} ${selectedStation.zipcode}`}
