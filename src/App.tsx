@@ -54,16 +54,22 @@ function App(): JSX.Element {
 
   return (
     <>
-      <ToastContainer position="top-center" theme="colored" hideProgressBar={false}/>
+      <ToastContainer
+        position="top-center"
+        theme="colored"
+        hideProgressBar={false}
+      />
       <BrowserRouter>
         <div className="flex flex-col bg-emerald-400">
           <Header handleSearch={handleSearch} />
         </div>
 
-        <RoutesList
-          stations={stations.stationsData}
-          handleGeolocationUpdate={handleGeolocationUpdate}
-        />
+        <div>
+          <RoutesList
+            stations={stations.stationsData}
+            handleGeolocationUpdate={handleGeolocationUpdate}
+          />
+        </div>
       </BrowserRouter>
     </>
   );
