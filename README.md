@@ -1,5 +1,5 @@
 
-#### fullstack application that allows hydrogen car drivers locate hydrogen stations quickly and in a mobile friendly way
+### Fullstack application that allows hydrogen car drivers locate hydrogen stations quickly and in a mobile friendly way
 
 
 ## Notable features
