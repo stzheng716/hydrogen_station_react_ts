@@ -39,7 +39,7 @@ const NavLinks = ({ handleSearch }: SearchProp) => {
             onChange={handleChange}
             id="simple-search"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1"
-            placeholder="Search exact zipcode..."
+            placeholder="search"
           />
         </div>
         <button
