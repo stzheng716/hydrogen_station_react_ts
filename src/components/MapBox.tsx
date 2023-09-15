@@ -1,5 +1,4 @@
 import Map, {
-  FullscreenControl,
   GeolocateControl,
   NavigationControl,
   Popup,
@@ -10,7 +9,7 @@ import MarkerComp from "./Markers";
 import { useState } from "react";
 import getColor from "../utils/getColor";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 interface StationProps {

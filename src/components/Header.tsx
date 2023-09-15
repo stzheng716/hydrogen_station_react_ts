@@ -4,10 +4,6 @@ import Nav from "./Nav";
 import SearchProp from "../models/handleSearchProp";
 import { Link } from "react-router-dom";
 
-interface HeaderProps {
-  handleSearch: (zipCode: string) => void;
-}
-
 const Header = ({ handleSearch }: SearchProp) => {
   return (
     <header className="sticky top-0 flex-wrap z-[20] mx-auto flex w-full items-center justify-between border-b border-gray-500 p-4">

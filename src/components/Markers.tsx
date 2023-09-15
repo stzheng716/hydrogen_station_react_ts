@@ -1,4 +1,4 @@
-import { Marker, Popup } from "react-map-gl";
+import { Marker } from "react-map-gl";
 import Station from "../models/stations";
 import getColor from "../utils/getColor";
 
@@ -6,11 +6,7 @@ interface MarkerProps {
   station: Station;
   setSelectedStation: (station: any) => any | null;
 }
-function MarkerComp({
-  station,
-  setSelectedStation
-}: MarkerProps): any {
-
+function MarkerComp({ station, setSelectedStation }: MarkerProps): any {
   return (
     <>
       <Marker

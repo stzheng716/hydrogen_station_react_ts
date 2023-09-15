@@ -1,7 +1,7 @@
 import Station from "../models/stations";
 import About from "./About";
 import HomePage from "./HomePage";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 interface RoutesListProps {
   stations: Station[];
@@ -20,10 +20,7 @@ function RoutesList({ stations, handleGeolocationUpdate }: RoutesListProps) {
           />
         }
       />
-      <Route
-        path="/about"
-        element={<About />}
-      />
+      <Route path="/about" element={<About />} />
     </Routes>
   );
 }
