@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL: string = "http://localhost:3001";
+// const BASE_URL: string = "http://localhost:3001";
+const BASE_URL: string = "https://ve5c5vuoua.execute-api.us-east-1.amazonaws.com/dev/";
 
 class HydrogenStationsApi {
 
@@ -39,7 +40,7 @@ class HydrogenStationsApi {
     }
 
     static async getZipStations(zipCode: string) {
-        const res = await this.request("stations/zipCode", { zipCode })
+        const res = await this.request("stations/search", { zipCode })
         return res?.data.station;
     }
 

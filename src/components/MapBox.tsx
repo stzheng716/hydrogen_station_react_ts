@@ -28,6 +28,10 @@ function MapBox({
     popStatus: false,
   });
 
+  function onClose() {
+    setSelectedStation({popStatus: false})
+  }
+
   function getStatus(status: string) {
     if (status === "1") {
       return "Available";
@@ -59,7 +63,6 @@ function MapBox({
           <MarkerComp
             station={s}
             setSelectedStation={setSelectedStation}
-            selectedStation={selectedStation}
             key={`marker-comp ${s.stationid}`}
           />
         ))}
@@ -81,6 +84,7 @@ function MapBox({
             key={`${selectedStation.long}-${selectedStation.lat}`}
             closeOnClick={false}
             anchor="bottom"
+            onClose={onClose}
           >
             <div className="flex-col">
               <h2

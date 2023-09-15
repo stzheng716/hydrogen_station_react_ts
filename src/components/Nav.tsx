@@ -5,16 +5,16 @@ import SearchProp from "../models/handleSearchProp";
 
 
 const NavLinks = ({ handleSearch }: SearchProp) => {
-  const [searchZip, setSearchZip] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
     const input = evt.target;
-    setSearchZip(input.value);
+    setSearchTerm(input.value);
   }
 
   function handleSubmit(evt: React.FormEvent) {
     evt.preventDefault();
-    handleSearch(searchZip);
+    handleSearch(searchTerm);
   }
 
   return (

@@ -5,12 +5,10 @@ import getColor from "../utils/getColor";
 interface MarkerProps {
   station: Station;
   setSelectedStation: (station: any) => any | null;
-  selectedStation: any;
 }
 function MarkerComp({
   station,
-  setSelectedStation,
-  selectedStation,
+  setSelectedStation
 }: MarkerProps): any {
 
   return (

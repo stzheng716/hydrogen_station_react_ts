@@ -28,8 +28,8 @@ function App(): JSX.Element {
     setStations({ stationsData: stations, isLoaded: true });
   }
 
-  async function handleSearch(zipCode: string) {
-    const stations = await HydrogenStationsApi.getZipStations(zipCode);
+  async function handleSearch(searchTerm: string) {
+    const stations = await HydrogenStationsApi.getZipStations(searchTerm);
     setStations({ stationsData: stations, isLoaded: true });
   }
 
