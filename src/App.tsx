@@ -49,7 +49,7 @@ function App(): JSX.Element {
   }
 
   if (!stations.isLoaded || !stations.stationsData) {
-    return <div className="loading">Loading</div>;
+    return <div className="loading">Loading...</div>;
   }
 
   return (

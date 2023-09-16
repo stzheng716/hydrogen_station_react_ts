@@ -13,7 +13,7 @@ function HomePage({ stations, handleGeolocationUpdate }: HomePageProps): JSX.Ele
     <div className="flex flex-col md:flex-row h-1/4 md:h-auto">
       <div className="w-full md:w-1/3 md:h-screen md:overflow-y-auto bg-gray-800 border-gray-700">
         <h5 className="text-xl font-bold leading-none dark:text-slate-300 pt-4 pl-4">
-          Station List
+          Station List by distance from you
         </h5>
         <ul className="divide-y divide-gray-200 dark:divide-gray-700 px-4">
           {stations.map((station: Station) => (
