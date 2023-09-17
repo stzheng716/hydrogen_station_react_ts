@@ -41,6 +41,9 @@ class HydrogenStationsApi {
 
     static async getZipStations(zipCode: string) {
         const res = await this.request("stations/search", { zipCode })
+        if(res === undefined) {
+            window.location.reload()
+        }
         return res?.data.station;
     }
 
