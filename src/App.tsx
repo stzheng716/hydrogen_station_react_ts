@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import RoutesList from "./components/RoutesList";
 import nearbySort from "nearby-sort";
 import { ToastContainer } from "react-toastify";
+import Loading from "./components/Loading";
 
 interface StationState {
   stationsData: Station[] | null;
@@ -49,7 +50,7 @@ function App(): JSX.Element {
   }
 
   if (!stations.isLoaded || !stations.stationsData) {
-    return <div className="loading">Loading...</div>;
+    return <Loading />;
   }
 
   return (
