@@ -1,8 +1,4 @@
-import Map, {
-  GeolocateControl,
-  NavigationControl,
-  Popup,
-} from "react-map-gl";
+import Map, { GeolocateControl, NavigationControl, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Station from "../models/stations";
 import MarkerComp from "./Markers";
@@ -11,6 +7,7 @@ import getColor from "../utils/getColor";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Legend from "./Legend";
 
 interface StationProps {
   stations: Station[];
@@ -23,12 +20,13 @@ function MapBox({
   stations,
   handleGeolocationUpdate,
 }: StationProps): JSX.Element {
+  
   const [selectedStation, setSelectedStation] = useState<any>({
     popStatus: false,
   });
 
   function onClose() {
-    setSelectedStation({popStatus: false})
+    setSelectedStation({ popStatus: false });
   }
 
   function getStatus(status: string) {
@@ -44,7 +42,7 @@ function MapBox({
       return "Unknown";
     }
   }
-
+  
   return (
     <div key="div-map">
       <Map
@@ -54,10 +52,16 @@ function MapBox({
           latitude: 37.8,
           zoom: 10,
         }}
-        style={{ width: "100vw", height: "93vh" }}
+        style={{
+          width: "2/3",
+          height: "93vh",
+          position: "relative",
+          zIndex: "0",
+        }}
         mapStyle="mapbox://styles/mapbox/navigation-night-v1"
         key="map"
       >
+        <Legend />
         {stations.map((s: Station) => (
           <MarkerComp
             station={s}
@@ -70,7 +74,8 @@ function MapBox({
           onGeolocate={(evt) => {
             const prom = handleGeolocationUpdate(evt);
             toast.promise(prom!, {
-              success: "Station List is now sorted by distance to your location",
+              success:
+                "Station List is now sorted by distance to your location",
               error: "Promise rejected",
             });
           }}
