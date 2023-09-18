@@ -1,13 +1,14 @@
 
 ### Fullstack application that allows hydrogen car drivers locate hydrogen stations quickly and in a mobile friendly way
 
-## DEMO website: https://main--h2ca.netlify.app/
+## DEMO website: https://h2locator.stevenzheng.dev/
 
 ## Notable features
 
 * Get status of Hydrogen station with updates to the status every minute
 * Interactive map with the location of each hydrogen location
 * List of the hydrogen station location with address
+* List of station will be sorted based user IP
 * Application is able to get the user's location and short the station closes to the user
 * Filter the hydrogen station via zipcode
 
