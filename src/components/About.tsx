@@ -2,7 +2,7 @@ import station from "../assets/images/station.jpg";
 
 function About() {
   return (
-    <div className="flex flex-col items-center bg-gray-800 text-slate-300 p-6 md:p-12 h-auto md:h-screen md:overflow-y-auto">
+    <div className="flex flex-col items-center bg-gray-800 text-slate-300 p-6 md:p-12 h-auto md:h-screen">
       <div className="w-full md:w-2/3 lg:w-1/2">
         <h2 className="text-2xl font-bold leading-tight mb-8 text-center">
           About CA Hydrogen Station Locator Application
@@ -49,7 +49,7 @@ function About() {
           clean and sustainable energy solutions. Our platform serves as a
           bridge connecting consumers with the nearest hydrogen stations,
           ensuring convenience and efficiency in their journey towards a greener
-          tomorrow.
+          tomorrow. 
         </p>
 
         <p>
