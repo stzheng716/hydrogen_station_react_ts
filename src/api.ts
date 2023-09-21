@@ -28,7 +28,8 @@ class HydrogenStationsApi {
                 console.log("messages", msg)
                 //   throw Array.isArray(msg) ? msg : [msg];
             }
-            let message = err.response.data.error.message;
+            let message = err.response.data
+            window.location.reload()
             throw Array.isArray(message) ? message : [message];
         }
     }
